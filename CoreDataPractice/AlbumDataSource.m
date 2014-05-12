@@ -40,6 +40,7 @@ static NSString *const CoolCellIdentifier = @"Cell";
     NSString *secondPart = @"&api_key=445fcdcaf6a5856b90442f6a9a217bea&format=json";
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",firstPart,searchValue,secondPart]];
+    
     NSURLSession *session = [NSURLSession sharedSession];
     [[session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data

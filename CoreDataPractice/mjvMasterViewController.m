@@ -61,32 +61,4 @@
     [Album addWithArray:albums forManagedObjectContext:nil];
 }
 
--(void)createJSONString
-{
-    NSString *searchValue = @"mobile";
-    NSString *firstPart = @"https://api.meetup.com/2/open_events.json?zip=60604&text=";
-    NSString *secondPart = @"&time=,1w&key=1f3467786863712a444a314e4966";
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",firstPart,searchValue,secondPart]];
-    //NSURLRequest * request = [NSURLRequest requestWithURL:url];
-    //use nsurlsession
-    NSURLSession *session = [NSURLSession sharedSession];
-    [session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        [self.tableView reloadData];
-    }];
-    
-    
-    /*
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-     {
-         NSArray *eventsArray = [NSJSONSerialization JSONObjectWithData:data
-                                                      options:NSJSONReadingAllowFragments
-                                                         error:&connectionError]
-         [@"results"];
-         [self.tableView reloadData];
-     }];
-     */
-}
-
-
 @end
