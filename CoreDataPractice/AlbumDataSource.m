@@ -34,9 +34,8 @@ static NSString *const CoolCellIdentifier = @"Cell";
 
 -(NSString *)createJSONForAlbumCover: (NSString *)str
 {
-    NSString *albumURL;
+    __block NSString *albumURL = nil;
     NSString *searchValue = [str stringByReplacingOccurrencesOfString:@" " withString:@"_"];
-    //http://ws.audioscrobbler.com/2.0/?method=album.search&album=ALBUMTITLE&api_key=445fcdcaf6a5856b90442f6a9a217bea&format=json
     NSString *firstPart = @"http://ws.audioscrobbler.com/2.0/?method=album.search&album=";
     NSString *secondPart = @"&api_key=445fcdcaf6a5856b90442f6a9a217bea&format=json";
     
@@ -61,12 +60,12 @@ static NSString *const CoolCellIdentifier = @"Cell";
             if ([imageDictionary[@"size"] isEqualToString:@"large"])
             {
                 NSLog(@"%@", imageDictionary[@"#text"]);
-                //albumURL = imageDictionary[@"#text"];
+                albumURL = imageDictionary[@"#text"];
             }
         }
     }] resume];
     
-    return nil;
+    return albumURL;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

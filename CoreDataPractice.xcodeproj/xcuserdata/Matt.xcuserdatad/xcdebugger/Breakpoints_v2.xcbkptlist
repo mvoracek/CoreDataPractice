@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CoreDataPractice/AlbumDataSource.m"
-            timestampString = "421548946.734948"
+            filePath = "CoreDataPractice/mjvMasterTableViewCell.m"
+            timestampString = "421549821.442999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "-createJSONForAlbumCover:"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "-layoutWithAlbum:withAlbumCoverURL:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
