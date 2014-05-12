@@ -17,7 +17,6 @@
 		C9BCE728191940A70005F964 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9BCE726191940A70005F964 /* Main.storyboard */; };
 		C9BCE72B191940A70005F964 /* CoreDataPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE729191940A70005F964 /* CoreDataPractice.xcdatamodeld */; };
 		C9BCE72E191940A70005F964 /* mjvMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE72D191940A70005F964 /* mjvMasterViewController.m */; };
-		C9BCE731191940A70005F964 /* mjvDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE730191940A70005F964 /* mjvDetailViewController.m */; };
 		C9BCE733191940A70005F964 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9BCE732191940A70005F964 /* Images.xcassets */; };
 		C9BCE73A191940A70005F964 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BCE739191940A70005F964 /* XCTest.framework */; };
 		C9BCE73B191940A70005F964 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BCE712191940A70005F964 /* Foundation.framework */; };
@@ -25,6 +24,19 @@
 		C9BCE73D191940A70005F964 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BCE718191940A70005F964 /* CoreData.framework */; };
 		C9BCE745191940A70005F964 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9BCE743191940A70005F964 /* InfoPlist.strings */; };
 		C9BCE747191940A70005F964 /* CoreDataPracticeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE746191940A70005F964 /* CoreDataPracticeTests.m */; };
+		C9BCE758191945880005F964 /* mjvMasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE757191945880005F964 /* mjvMasterTableViewCell.m */; };
+		C9BCE75A191963CA0005F964 /* Albums.plist in Resources */ = {isa = PBXBuildFile; fileRef = C9BCE759191963CA0005F964 /* Albums.plist */; };
+		C9BCE77119197CA60005F964 /* VOKCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE76119197CA60005F964 /* VOKCollectionDataSource.m */; };
+		C9BCE77219197CA60005F964 /* VOKDefaultPagingAccessory.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE76319197CA60005F964 /* VOKDefaultPagingAccessory.m */; };
+		C9BCE77319197CA60005F964 /* VOKFetchedResultsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE76519197CA60005F964 /* VOKFetchedResultsDataSource.m */; };
+		C9BCE77419197CA60005F964 /* VOKPagingFetchedResultsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE76719197CA60005F964 /* VOKPagingFetchedResultsDataSource.m */; };
+		C9BCE77519197CA60005F964 /* VOKCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE76919197CA60005F964 /* VOKCoreDataManager.m */; };
+		C9BCE77619197CA60005F964 /* VOKManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE76B19197CA60005F964 /* VOKManagedObject.m */; };
+		C9BCE77719197CA60005F964 /* VOKManagedObjectMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE76D19197CA60005F964 /* VOKManagedObjectMap.m */; };
+		C9BCE77819197CA60005F964 /* VOKManagedObjectMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE76F19197CA60005F964 /* VOKManagedObjectMapper.m */; };
+		C9BCE77C191983330005F964 /* AlbumDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE77B191983330005F964 /* AlbumDataSource.m */; };
+		C9BCE77F191A75470005F964 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BCE77E191A75470005F964 /* Album.m */; };
+		C9BCE7CB191AD2060005F964 /* IMG_0001.png in Resources */ = {isa = PBXBuildFile; fileRef = C9BCE7CA191AD2060005F964 /* IMG_0001.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,14 +65,38 @@
 		C9BCE72A191940A70005F964 /* CoreDataPractice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataPractice.xcdatamodel; sourceTree = "<group>"; };
 		C9BCE72C191940A70005F964 /* mjvMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mjvMasterViewController.h; sourceTree = "<group>"; };
 		C9BCE72D191940A70005F964 /* mjvMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mjvMasterViewController.m; sourceTree = "<group>"; };
-		C9BCE72F191940A70005F964 /* mjvDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mjvDetailViewController.h; sourceTree = "<group>"; };
-		C9BCE730191940A70005F964 /* mjvDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mjvDetailViewController.m; sourceTree = "<group>"; };
 		C9BCE732191940A70005F964 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9BCE738191940A70005F964 /* CoreDataPracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataPracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BCE739191940A70005F964 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C9BCE742191940A70005F964 /* CoreDataPracticeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CoreDataPracticeTests-Info.plist"; sourceTree = "<group>"; };
 		C9BCE744191940A70005F964 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9BCE746191940A70005F964 /* CoreDataPracticeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataPracticeTests.m; sourceTree = "<group>"; };
+		C9BCE756191945880005F964 /* mjvMasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mjvMasterTableViewCell.h; sourceTree = "<group>"; };
+		C9BCE757191945880005F964 /* mjvMasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mjvMasterTableViewCell.m; sourceTree = "<group>"; };
+		C9BCE759191963CA0005F964 /* Albums.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Albums.plist; sourceTree = "<group>"; };
+		C9BCE75E19197CA60005F964 /* VOKCarouselDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKCarouselDataSource.h; sourceTree = "<group>"; };
+		C9BCE75F19197CA60005F964 /* VOKCarouselDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKCarouselDataSource.m; sourceTree = "<group>"; };
+		C9BCE76019197CA60005F964 /* VOKCollectionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKCollectionDataSource.h; sourceTree = "<group>"; };
+		C9BCE76119197CA60005F964 /* VOKCollectionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKCollectionDataSource.m; sourceTree = "<group>"; };
+		C9BCE76219197CA60005F964 /* VOKDefaultPagingAccessory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKDefaultPagingAccessory.h; sourceTree = "<group>"; };
+		C9BCE76319197CA60005F964 /* VOKDefaultPagingAccessory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKDefaultPagingAccessory.m; sourceTree = "<group>"; };
+		C9BCE76419197CA60005F964 /* VOKFetchedResultsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKFetchedResultsDataSource.h; sourceTree = "<group>"; };
+		C9BCE76519197CA60005F964 /* VOKFetchedResultsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKFetchedResultsDataSource.m; sourceTree = "<group>"; };
+		C9BCE76619197CA60005F964 /* VOKPagingFetchedResultsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKPagingFetchedResultsDataSource.h; sourceTree = "<group>"; };
+		C9BCE76719197CA60005F964 /* VOKPagingFetchedResultsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKPagingFetchedResultsDataSource.m; sourceTree = "<group>"; };
+		C9BCE76819197CA60005F964 /* VOKCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKCoreDataManager.h; sourceTree = "<group>"; };
+		C9BCE76919197CA60005F964 /* VOKCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKCoreDataManager.m; sourceTree = "<group>"; };
+		C9BCE76A19197CA60005F964 /* VOKManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKManagedObject.h; sourceTree = "<group>"; };
+		C9BCE76B19197CA60005F964 /* VOKManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKManagedObject.m; sourceTree = "<group>"; };
+		C9BCE76C19197CA60005F964 /* VOKManagedObjectMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKManagedObjectMap.h; sourceTree = "<group>"; };
+		C9BCE76D19197CA60005F964 /* VOKManagedObjectMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKManagedObjectMap.m; sourceTree = "<group>"; };
+		C9BCE76E19197CA60005F964 /* VOKManagedObjectMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VOKManagedObjectMapper.h; sourceTree = "<group>"; };
+		C9BCE76F19197CA60005F964 /* VOKManagedObjectMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VOKManagedObjectMapper.m; sourceTree = "<group>"; };
+		C9BCE77A191983330005F964 /* AlbumDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumDataSource.h; sourceTree = "<group>"; };
+		C9BCE77B191983330005F964 /* AlbumDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDataSource.m; sourceTree = "<group>"; };
+		C9BCE77D191A75470005F964 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
+		C9BCE77E191A75470005F964 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
+		C9BCE7CA191AD2060005F964 /* IMG_0001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0001.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +128,7 @@
 		C9BCE706191940A70005F964 = {
 			isa = PBXGroup;
 			children = (
+				C9BCE77919197CAB0005F964 /* VOKCoreDataManager */,
 				C9BCE71A191940A70005F964 /* CoreDataPractice */,
 				C9BCE740191940A70005F964 /* CoreDataPracticeTests */,
 				C9BCE711191940A70005F964 /* Frameworks */,
@@ -128,10 +165,14 @@
 				C9BCE726191940A70005F964 /* Main.storyboard */,
 				C9BCE72C191940A70005F964 /* mjvMasterViewController.h */,
 				C9BCE72D191940A70005F964 /* mjvMasterViewController.m */,
-				C9BCE72F191940A70005F964 /* mjvDetailViewController.h */,
-				C9BCE730191940A70005F964 /* mjvDetailViewController.m */,
+				C9BCE756191945880005F964 /* mjvMasterTableViewCell.h */,
+				C9BCE757191945880005F964 /* mjvMasterTableViewCell.m */,
+				C9BCE77A191983330005F964 /* AlbumDataSource.h */,
+				C9BCE77B191983330005F964 /* AlbumDataSource.m */,
 				C9BCE732191940A70005F964 /* Images.xcassets */,
 				C9BCE729191940A70005F964 /* CoreDataPractice.xcdatamodeld */,
+				C9BCE77D191A75470005F964 /* Album.h */,
+				C9BCE77E191A75470005F964 /* Album.m */,
 				C9BCE71B191940A70005F964 /* Supporting Files */,
 			);
 			path = CoreDataPractice;
@@ -140,7 +181,9 @@
 		C9BCE71B191940A70005F964 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C9BCE7CA191AD2060005F964 /* IMG_0001.png */,
 				C9BCE71C191940A70005F964 /* CoreDataPractice-Info.plist */,
+				C9BCE759191963CA0005F964 /* Albums.plist */,
 				C9BCE71D191940A70005F964 /* InfoPlist.strings */,
 				C9BCE720191940A70005F964 /* main.m */,
 				C9BCE722191940A70005F964 /* CoreDataPractice-Prefix.pch */,
@@ -164,6 +207,39 @@
 				C9BCE743191940A70005F964 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9BCE75D19197CA60005F964 /* Optional Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C9BCE75E19197CA60005F964 /* VOKCarouselDataSource.h */,
+				C9BCE75F19197CA60005F964 /* VOKCarouselDataSource.m */,
+				C9BCE76019197CA60005F964 /* VOKCollectionDataSource.h */,
+				C9BCE76119197CA60005F964 /* VOKCollectionDataSource.m */,
+				C9BCE76219197CA60005F964 /* VOKDefaultPagingAccessory.h */,
+				C9BCE76319197CA60005F964 /* VOKDefaultPagingAccessory.m */,
+				C9BCE76419197CA60005F964 /* VOKFetchedResultsDataSource.h */,
+				C9BCE76519197CA60005F964 /* VOKFetchedResultsDataSource.m */,
+				C9BCE76619197CA60005F964 /* VOKPagingFetchedResultsDataSource.h */,
+				C9BCE76719197CA60005F964 /* VOKPagingFetchedResultsDataSource.m */,
+			);
+			path = "Optional Data Sources";
+			sourceTree = "<group>";
+		};
+		C9BCE77919197CAB0005F964 /* VOKCoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				C9BCE75D19197CA60005F964 /* Optional Data Sources */,
+				C9BCE76819197CA60005F964 /* VOKCoreDataManager.h */,
+				C9BCE76919197CA60005F964 /* VOKCoreDataManager.m */,
+				C9BCE76A19197CA60005F964 /* VOKManagedObject.h */,
+				C9BCE76B19197CA60005F964 /* VOKManagedObject.m */,
+				C9BCE76C19197CA60005F964 /* VOKManagedObjectMap.h */,
+				C9BCE76D19197CA60005F964 /* VOKManagedObjectMap.m */,
+				C9BCE76E19197CA60005F964 /* VOKManagedObjectMapper.h */,
+				C9BCE76F19197CA60005F964 /* VOKManagedObjectMapper.m */,
+			);
+			name = VOKCoreDataManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +286,7 @@
 		C9BCE707191940A70005F964 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = mjv;
+				CLASSPREFIX = MJV;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = VOKAL;
 				TargetAttributes = {
@@ -244,7 +320,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9BCE733191940A70005F964 /* Images.xcassets in Resources */,
+				C9BCE7CB191AD2060005F964 /* IMG_0001.png in Resources */,
 				C9BCE71F191940A70005F964 /* InfoPlist.strings in Resources */,
+				C9BCE75A191963CA0005F964 /* Albums.plist in Resources */,
 				C9BCE728191940A70005F964 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,11 +342,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9BCE731191940A70005F964 /* mjvDetailViewController.m in Sources */,
+				C9BCE77419197CA60005F964 /* VOKPagingFetchedResultsDataSource.m in Sources */,
 				C9BCE72E191940A70005F964 /* mjvMasterViewController.m in Sources */,
+				C9BCE77819197CA60005F964 /* VOKManagedObjectMapper.m in Sources */,
+				C9BCE77F191A75470005F964 /* Album.m in Sources */,
+				C9BCE77219197CA60005F964 /* VOKDefaultPagingAccessory.m in Sources */,
 				C9BCE725191940A70005F964 /* mjvAppDelegate.m in Sources */,
+				C9BCE77619197CA60005F964 /* VOKManagedObject.m in Sources */,
 				C9BCE72B191940A70005F964 /* CoreDataPractice.xcdatamodeld in Sources */,
+				C9BCE77719197CA60005F964 /* VOKManagedObjectMap.m in Sources */,
+				C9BCE77C191983330005F964 /* AlbumDataSource.m in Sources */,
+				C9BCE77519197CA60005F964 /* VOKCoreDataManager.m in Sources */,
+				C9BCE77319197CA60005F964 /* VOKFetchedResultsDataSource.m in Sources */,
+				C9BCE77119197CA60005F964 /* VOKCollectionDataSource.m in Sources */,
 				C9BCE721191940A70005F964 /* main.m in Sources */,
+				C9BCE758191945880005F964 /* mjvMasterTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +561,7 @@
 				C9BCE74C191940A70005F964 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9BCE74D191940A70005F964 /* Build configuration list for PBXNativeTarget "CoreDataPracticeTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +570,7 @@
 				C9BCE74F191940A70005F964 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

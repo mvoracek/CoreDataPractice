@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>artist</key>
+		<string>Iggy &amp; The Stooges</string>
+		<key>title</key>
+		<string>Raw Power</string>
+		<key>year</key>
+		<integer>1973</integer>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>Jawbox</string>
+		<key>title</key>
+		<string>For Your Own Special Sweetheart</string>
+		<key>year</key>
+		<integer>1994</integer>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>LCD Soundsystem</string>
+		<key>title</key>
+		<string>Sound Of Silver</string>
+		<key>year</key>
+		<integer>2007</integer>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>Parquet Courts</string>
+		<key>title</key>
+		<string>Light Up Gold</string>
+		<key>year</key>
+		<integer>2013</integer>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>Hüsker Dü</string>
+		<key>title</key>
+		<string>New Day Rising</string>
+		<key>year</key>
+		<real>1985</real>
+	</dict>
+</array>
+</plist>
