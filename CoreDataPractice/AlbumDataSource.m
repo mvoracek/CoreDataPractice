@@ -25,48 +25,22 @@ static NSString *const CoolCellIdentifier = @"Cell";
                                              reuseIdentifier:CoolCellIdentifier];
     }
     
-    NSString * albumCoverURL = [self createJSONForAlbumCover:album.title];
+    [self downloadAndDisplayAlbumCoverFromTitle:album.title atIndexPath:indexPath];
     
-    [cell layoutWithAlbum:album withAlbumCoverURL:albumCoverURL];
+    [cell layoutWithAlbum:album];
     
     return cell;
 }
 
--(NSString *)createJSONForAlbumCover: (NSString *)str
+-(void)downloadAndDisplayAlbumCoverFromTitle:(NSString *)title atIndexPath:(NSIndexPath *)indexPath
 {
-    __block NSString *albumURL = nil;
-    NSString *searchValue = [str stringByReplacingOccurrencesOfString:@" " withString:@"_"];
+    NSString *searchValue = [title stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     NSString *firstPart = @"http://ws.audioscrobbler.com/2.0/?method=album.search&album=";
     NSString *secondPart = @"&api_key=445fcdcaf6a5856b90442f6a9a217bea&format=json";
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",firstPart,searchValue,secondPart]];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    [[session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data
-                                                                   options:NSJSONReadingAllowFragments
-                                                                     error:nil];
-        //NSLog(@"%@", dictionary[@"results"]);
-        NSArray *images;
-        NSArray *largeFilePathArray = dictionary[@"results"][@"albummatches"][@"album"];
-        if ([largeFilePathArray isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *album = (NSDictionary *)largeFilePathArray;
-            images = album[@"image"];
-        } else {
-            images = largeFilePathArray[0][@"image"];
-        }
-        
-        for (NSDictionary * imageDictionary in images)
-        {
-            if ([imageDictionary[@"size"] isEqualToString:@"large"])
-            {
-                NSLog(@"%@", imageDictionary[@"#text"]);
-                albumURL = imageDictionary[@"#text"];
-            }
-        }
-    }] resume];
-    
-    return albumURL;
+    [self beginSession:url forIndexPath:indexPath];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -94,6 +68,64 @@ static NSString *const CoolCellIdentifier = @"Cell";
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+-(void)beginSession: (NSURL *)url forIndexPath: (NSIndexPath *)indexPath
+{
+    NSURLSession *session = [NSURLSession sharedSession];
+    [[session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data
+                                                                   options:NSJSONReadingAllowFragments
+                                                                     error:nil];
+        NSArray *images;
+        NSArray *largeFilePathArray = dictionary[@"results"][@"albummatches"][@"album"];
+        
+        if ([largeFilePathArray isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *album = (NSDictionary *)largeFilePathArray;
+            images = album[@"image"];
+        } else {
+            images = largeFilePathArray[0][@"image"];
+        }
+        NSLog(@"%@", dictionary);
+        
+        [self downloadImages:images usingSession:session forIndexPath:indexPath];
+        
+    }] resume];
+}
+
+-(void)downloadImages: (NSArray *)images usingSession: (NSURLSession *)session forIndexPath: (NSIndexPath *)indexPath
+{
+    for (NSDictionary * imageDictionary in images)
+    {
+        if ([imageDictionary[@"size"] isEqualToString:@"large"])
+        {
+            NSLog(@"%@", imageDictionary[@"#text"]);
+            NSString *albumLocation = imageDictionary[@"#text"];
+            NSURL *albumURL = [NSURL URLWithString:albumLocation];
+            
+            NSURLSessionDataTask *dataTask = [session dataTaskWithURL:albumURL
+                                                     completionHandler:^(NSData *data, NSURLResponse *response,
+                                                                         NSError *error) {
+                                                         if (!error) {
+                                                             dispatch_async(dispatch_get_main_queue(), ^{
+                                                                 UIImage *image = [UIImage imageWithData:data];
+                                                                 mjvMasterTableViewCell *cell = (mjvMasterTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+                                                                 [cell setAlbumCover:image];
+                                                             });
+                                                         } else {
+                                                             // HANDLE ERROR //
+                                                         }
+                                                     }];
+            [dataTask resume];
+            
+//            NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:albumURL]];
+//            UIImage *image = [UIImage imageWithData:data];
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                mjvMasterTableViewCell *cell = (mjvMasterTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+//                [cell setAlbumCover:image];
+//            });
+        }
+    }
 }
 
 @end

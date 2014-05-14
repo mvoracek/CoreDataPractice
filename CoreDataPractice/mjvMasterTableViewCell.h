@@ -9,7 +9,7 @@
 @class Album;
 
 @interface mjvMasterTableViewCell : UITableViewCell
-
-- (void)layoutWithAlbum:(Album *)album withAlbumCoverURL: (NSString *) albumCoverURL;
+- (void)setAlbumCover:(UIImage *)albumImage;
+- (void)layoutWithAlbum:(Album *)album;
 
 @end

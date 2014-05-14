@@ -23,10 +23,22 @@
 {
     [super viewDidLoad];
     
-    [self setupDataSource];
     [self setupCustomMapper];
+    [self setupDataSource];
     [self loadFromPList];
     
+}
+
+- (void)setupCustomMapper
+{
+    [[VOKCoreDataManager sharedInstance] setResource:nil database:@"CoreDataPractice.sqlite"];
+    [[VOKCoreDataManager sharedInstance] managedObjectContext];
+    
+    NSArray *maps = @[MAP_FOREIGN_TO_LOCAL(@"artist", artist),
+                      MAP_FOREIGN_TO_LOCAL(@"title", title),
+                      MAP_FOREIGN_TO_LOCAL(@"year", year)];
+    VOKManagedObjectMapper *mapper = [VOKManagedObjectMapper mapperWithUniqueKey:CDSELECTOR(title) andMaps:maps];
+    [[VOKCoreDataManager sharedInstance] setObjectMapper:mapper forClass:[Album class]];
 }
 
 - (void)setupDataSource
@@ -37,28 +49,26 @@
     self.dataSource = [[AlbumDataSource alloc] initWithPredicate:nil
                                                        cacheName:nil
                                                        tableView:self.tableView
-                                              sectionNameKeyPath:nil sortDescriptors:sortDescriptors
+                                              sectionNameKeyPath:nil
+                                                 sortDescriptors:sortDescriptors
                                               managedObjectClass:[Album class]];
-}
-
-- (void)setupCustomMapper
-{
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"dd' 'LLL' 'yy' 'HH:mm"];
-    [df setTimeZone:[NSTimeZone localTimeZone]];
-    
-    NSArray *maps = @[MAP_FOREIGN_TO_LOCAL(@"artist", artist),
-                      MAP_FOREIGN_TO_LOCAL(@"title", title),
-                      MAP_FOREIGN_TO_LOCAL(@"year", year)];
-    VOKManagedObjectMapper *mapper = [VOKManagedObjectMapper mapperWithUniqueKey:CDSELECTOR(title) andMaps:maps];
-    [[VOKCoreDataManager sharedInstance] setObjectMapper:mapper forClass:[Album class]];
 }
 
 -(void)loadFromPList
 {
     NSArray *albums = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Albums" ofType:@"plist"]];
-    
     [Album addWithArray:albums forManagedObjectContext:nil];
+    [[VOKCoreDataManager sharedInstance] saveMainContext];
+    
+    [self loadPhotosAsynchronously];
+}
+
+- (void)loadPhotosAsynchronously
+{
+    //fetch all albums
+    //check for existing photo data
+    //if no photo, download and save to core data
+    
 }
 
 @end

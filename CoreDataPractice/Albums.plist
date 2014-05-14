@@ -42,5 +42,85 @@
 		<key>year</key>
 		<real>1985</real>
 	</dict>
+	<dict>
+		<key>artist</key>
+		<string>Modest Mouse</string>
+		<key>title</key>
+		<string>The Lonesome Crowded West</string>
+		<key>year</key>
+		<integer>1997</integer>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>Wire</string>
+		<key>title</key>
+		<string>Pink Flag</string>
+		<key>year</key>
+		<integer>1977</integer>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>Sonic Youth</string>
+		<key>title</key>
+		<string>Daydream Nation</string>
+		<key>year</key>
+		<integer>1988</integer>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>TV On The Radio</string>
+		<key>title</key>
+		<string>Desperate Youth Bloodthirsty Babes</string>
+		<key>year</key>
+		<real>2004</real>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>Deerhunter</string>
+		<key>title</key>
+		<string>Halcyon Digest</string>
+		<key>year</key>
+		<integer>2010</integer>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>Radiohead</string>
+		<key>title</key>
+		<string>Kid A</string>
+		<key>year</key>
+		<integer>2000</integer>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>My Bloody Valentine</string>
+		<key>title</key>
+		<string>Loveless</string>
+		<key>year</key>
+		<integer>1991</integer>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>Velvet Underground</string>
+		<key>title</key>
+		<string>The Velvet Underground</string>
+		<key>year</key>
+		<real>1969</real>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>Talking Heads</string>
+		<key>title</key>
+		<string>Remain In Light</string>
+		<key>year</key>
+		<integer>1980</integer>
+	</dict>
+	<dict>
+		<key>artist</key>
+		<string>St. Vincent</string>
+		<key>title</key>
+		<string>Strange Mercy</string>
+		<key>year</key>
+		<integer>2011</integer>
+	</dict>
 </array>
 </plist>

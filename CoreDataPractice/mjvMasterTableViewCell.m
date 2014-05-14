@@ -19,15 +19,16 @@
 
 @implementation mjvMasterTableViewCell
 
-- (void)layoutWithAlbum:(Album *)album withAlbumCoverURL: (NSString *) albumCoverURL
+- (void)layoutWithAlbum:(Album *)album
 {
-    NSLog(@"%@", albumCoverURL);
-    //[self createJSONForAlbumCover:album.title];
-    
     self.artistLabel.text = album.artist;
     self.titleLabel.text = album.title;
     self.yearLabel.text = album.year.description;
-    self.albumImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:albumCoverURL]]];
+}
+
+- (void)setAlbumCover:(UIImage *)albumImage
+{
+    self.albumImage.image = albumImage;
 }
 
 @end
