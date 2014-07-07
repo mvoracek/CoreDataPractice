@@ -17,4 +17,6 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * year;
 
+@property (nonatomic, retain) NSData *albumCover;
+
 @end

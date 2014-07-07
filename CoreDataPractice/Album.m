@@ -15,5 +15,6 @@
 @dynamic timeStamp;
 @dynamic title;
 @dynamic year;
+@dynamic albumCover;
 
 @end

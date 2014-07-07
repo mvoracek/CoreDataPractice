@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C92DEDA1192FEA560089077B /* UIImageView+MJVImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C92DEDA0192FEA560089077B /* UIImageView+MJVImageLoader.m */; };
+		C99945D51925321F002FA37B /* MJVMoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99945D41925321F002FA37B /* MJVMoreInfoViewController.m */; };
 		C9BCE713191940A70005F964 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BCE712191940A70005F964 /* Foundation.framework */; };
 		C9BCE715191940A70005F964 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BCE714191940A70005F964 /* CoreGraphics.framework */; };
 		C9BCE717191940A70005F964 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BCE716191940A70005F964 /* UIKit.framework */; };
@@ -50,6 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C92DED9F192FEA560089077B /* UIImageView+MJVImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MJVImageLoader.h"; sourceTree = "<group>"; };
+		C92DEDA0192FEA560089077B /* UIImageView+MJVImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MJVImageLoader.m"; sourceTree = "<group>"; };
+		C99945D31925321F002FA37B /* MJVMoreInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJVMoreInfoViewController.h; sourceTree = "<group>"; };
+		C99945D41925321F002FA37B /* MJVMoreInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJVMoreInfoViewController.m; sourceTree = "<group>"; };
 		C9BCE70F191940A70005F964 /* CoreDataPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BCE712191940A70005F964 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9BCE714191940A70005F964 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -167,8 +173,12 @@
 				C9BCE72D191940A70005F964 /* mjvMasterViewController.m */,
 				C9BCE756191945880005F964 /* mjvMasterTableViewCell.h */,
 				C9BCE757191945880005F964 /* mjvMasterTableViewCell.m */,
+				C99945D31925321F002FA37B /* MJVMoreInfoViewController.h */,
+				C99945D41925321F002FA37B /* MJVMoreInfoViewController.m */,
 				C9BCE77A191983330005F964 /* AlbumDataSource.h */,
 				C9BCE77B191983330005F964 /* AlbumDataSource.m */,
+				C92DED9F192FEA560089077B /* UIImageView+MJVImageLoader.h */,
+				C92DEDA0192FEA560089077B /* UIImageView+MJVImageLoader.m */,
 				C9BCE732191940A70005F964 /* Images.xcassets */,
 				C9BCE729191940A70005F964 /* CoreDataPractice.xcdatamodeld */,
 				C9BCE77D191A75470005F964 /* Album.h */,
@@ -343,7 +353,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9BCE77419197CA60005F964 /* VOKPagingFetchedResultsDataSource.m in Sources */,
+				C99945D51925321F002FA37B /* MJVMoreInfoViewController.m in Sources */,
 				C9BCE72E191940A70005F964 /* mjvMasterViewController.m in Sources */,
+				C92DEDA1192FEA560089077B /* UIImageView+MJVImageLoader.m in Sources */,
 				C9BCE77819197CA60005F964 /* VOKManagedObjectMapper.m in Sources */,
 				C9BCE77F191A75470005F964 /* Album.m in Sources */,
 				C9BCE77219197CA60005F964 /* VOKDefaultPagingAccessory.m in Sources */,

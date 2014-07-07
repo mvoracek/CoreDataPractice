@@ -21,14 +21,12 @@
 
 - (void)layoutWithAlbum:(Album *)album
 {
+    UIImage * image = [UIImage imageWithData:album.albumCover];
     self.artistLabel.text = album.artist;
     self.titleLabel.text = album.title;
     self.yearLabel.text = album.year.description;
+    self.albumImage.image = image;
 }
 
-- (void)setAlbumCover:(UIImage *)albumImage
-{
-    self.albumImage.image = albumImage;
-}
 
 @end

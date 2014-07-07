@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Album" representedClassName="Album">
+        <attribute name="albumCover" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Date">
             <userInfo/>
@@ -10,6 +11,6 @@
         <userInfo/>
     </entity>
     <elements>
-        <element name="Album" positionX="261" positionY="189" width="128" height="105"/>
+        <element name="Album" positionX="261" positionY="189" width="128" height="120"/>
     </elements>
 </model>
