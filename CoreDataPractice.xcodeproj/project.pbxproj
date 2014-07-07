@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C921B746196B483E009D0A6C /* MJVAddAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C921B745196B483E009D0A6C /* MJVAddAlbumViewController.m */; };
 		C92DEDA1192FEA560089077B /* UIImageView+MJVImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C92DEDA0192FEA560089077B /* UIImageView+MJVImageLoader.m */; };
 		C99945D51925321F002FA37B /* MJVMoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C99945D41925321F002FA37B /* MJVMoreInfoViewController.m */; };
 		C9BCE713191940A70005F964 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BCE712191940A70005F964 /* Foundation.framework */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C921B744196B483E009D0A6C /* MJVAddAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJVAddAlbumViewController.h; sourceTree = "<group>"; };
+		C921B745196B483E009D0A6C /* MJVAddAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJVAddAlbumViewController.m; sourceTree = "<group>"; };
 		C92DED9F192FEA560089077B /* UIImageView+MJVImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MJVImageLoader.h"; sourceTree = "<group>"; };
 		C92DEDA0192FEA560089077B /* UIImageView+MJVImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MJVImageLoader.m"; sourceTree = "<group>"; };
 		C99945D31925321F002FA37B /* MJVMoreInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJVMoreInfoViewController.h; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 				C9BCE757191945880005F964 /* mjvMasterTableViewCell.m */,
 				C99945D31925321F002FA37B /* MJVMoreInfoViewController.h */,
 				C99945D41925321F002FA37B /* MJVMoreInfoViewController.m */,
+				C921B744196B483E009D0A6C /* MJVAddAlbumViewController.h */,
+				C921B745196B483E009D0A6C /* MJVAddAlbumViewController.m */,
 				C9BCE77A191983330005F964 /* AlbumDataSource.h */,
 				C9BCE77B191983330005F964 /* AlbumDataSource.m */,
 				C92DED9F192FEA560089077B /* UIImageView+MJVImageLoader.h */,
@@ -352,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C921B746196B483E009D0A6C /* MJVAddAlbumViewController.m in Sources */,
 				C9BCE77419197CA60005F964 /* VOKPagingFetchedResultsDataSource.m in Sources */,
 				C99945D51925321F002FA37B /* MJVMoreInfoViewController.m in Sources */,
 				C9BCE72E191940A70005F964 /* mjvMasterViewController.m in Sources */,
