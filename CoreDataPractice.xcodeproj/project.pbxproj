@@ -55,6 +55,7 @@
 /* Begin PBXFileReference section */
 		C921B744196B483E009D0A6C /* MJVAddAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJVAddAlbumViewController.h; sourceTree = "<group>"; };
 		C921B745196B483E009D0A6C /* MJVAddAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJVAddAlbumViewController.m; sourceTree = "<group>"; };
+		C921B753196F3CE9009D0A6C /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		C92DED9F192FEA560089077B /* UIImageView+MJVImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MJVImageLoader.h"; sourceTree = "<group>"; };
 		C92DEDA0192FEA560089077B /* UIImageView+MJVImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MJVImageLoader.m"; sourceTree = "<group>"; };
 		C99945D31925321F002FA37B /* MJVMoreInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJVMoreInfoViewController.h; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 		C9BCE711191940A70005F964 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C921B753196F3CE9009D0A6C /* libcommonCrypto.dylib */,
 				C9BCE712191940A70005F964 /* Foundation.framework */,
 				C9BCE714191940A70005F964 /* CoreGraphics.framework */,
 				C9BCE716191940A70005F964 /* UIKit.framework */,
@@ -502,6 +504,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreDataPractice/CoreDataPractice-Prefix.pch";
 				INFOPLIST_FILE = "CoreDataPractice/CoreDataPractice-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -515,6 +521,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoreDataPractice/CoreDataPractice-Prefix.pch";
 				INFOPLIST_FILE = "CoreDataPractice/CoreDataPractice-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -8,6 +8,7 @@
 
 #import "MJVMoreInfoViewController.h"
 #import "Album.h"
+#import <CommonCrypto/CommonCrypto.h>
 
 @interface MJVMoreInfoViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -25,7 +26,7 @@
 @end
 
 static NSString *Api = @"93v2rk2vdsrnzyxwv3bqvjbj";
-static NSString *ApiPlusSecret = @"93v2rk2vdsrnzyxwv3bqvjbjrqCnJTmHqD";
+static NSString *ApiPlusSecret = @"93v2rk2vdsrnzyxwv3bqvjbjkGPDNCJDSx";
 
 @implementation MJVMoreInfoViewController
 
@@ -50,8 +51,11 @@ static NSString *ApiPlusSecret = @"93v2rk2vdsrnzyxwv3bqvjbjrqCnJTmHqD";
     self.titleLabel.text = self.album.title;
     self.yearLabel.text = [self.album.year stringValue];
     self.albumCoverImage.image = [UIImage imageWithData:self.album.albumCover];
-    [self downloadAlbumTracks:self.album.title completionHandler:^(NSDictionary *tracks) {}];
-    [self downloadAlbumReview:self.album.title completionHandler:^(NSDictionary *review) {}];
+    
+    NSURL *tracksUrl = [self createURLWithTitle:self.album.title parameter:@"tracks"];
+    NSURL *reviewUrl = [self createURLWithTitle:self.album.title parameter:@"primaryreview"];
+    [self downloadAlbumTracks:tracksUrl completionHandler:^(NSDictionary *tracks) {}];
+    [self downloadAlbumReview:reviewUrl completionHandler:^(NSDictionary *review) {}];
 }
 
 - (IBAction)moreInfoViewSwitch:(id)sender {
@@ -71,9 +75,11 @@ static NSString *ApiPlusSecret = @"93v2rk2vdsrnzyxwv3bqvjbjrqCnJTmHqD";
 
 - (NSString *) md5
 {
-    NSString *concatenatedAuthString = [ApiPlusSecret stringByAppendingString:@""];
+    NSDate *aDate = [NSDate date];
+    NSString *timestamp = [NSString stringWithFormat:@"%.0f", [aDate timeIntervalSince1970]];
+    NSString *concatenatedAuthString = [ApiPlusSecret stringByAppendingString:timestamp];
     const char *cStr = [concatenatedAuthString UTF8String];
-    unsigned char digest[32];
+    unsigned char digest[16];
     CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
     
     NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
@@ -83,15 +89,21 @@ static NSString *ApiPlusSecret = @"93v2rk2vdsrnzyxwv3bqvjbjrqCnJTmHqD";
     return output;
 }
 
-- (void)downloadAlbumReview: (NSString *)title completionHandler: (void (^)(NSDictionary *))handler
+- (NSURL *) createURLWithTitle: (NSString *)title parameter: (NSString *)parameter
 {
+    NSString *newSig = [self md5];
     NSString *searchValue = [title stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    NSString *firstPart = @"http://api.rovicorp.com/data/v1.1/album/primaryreview?album=";
-    NSString *secondPart = @"&country=US&language=en&format=json&apikey=93v2rk2vdsrnzyxwv3bqvjbj&sig=af2532ba497e6517d62d787b48b02788";
+    NSString *firstPart = @"http://api.rovicorp.com/data/v1.1/album/";
+    NSString *album = @"?album=";
+    NSString *secondPart = @"&country=US&language=en&format=json&apikey=93v2rk2vdsrnzyxwv3bqvjbj&sig=";
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",firstPart,searchValue,secondPart]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@%@%@%@",firstPart,parameter,album, searchValue,secondPart,newSig]];
     NSLog(@"%@", url);
-    
+    return url;
+}
+
+- (void)downloadAlbumReview: (NSURL *)url completionHandler: (void (^)(NSDictionary *))handler
+{
     NSURLSession *session = [NSURLSession sharedSession];
     [[session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data
@@ -103,6 +115,10 @@ static NSString *ApiPlusSecret = @"93v2rk2vdsrnzyxwv3bqvjbjrqCnJTmHqD";
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"~(.*?)]" options:0 error:&error];
         NSString *fixedText = [regex stringByReplacingMatchesInString:updatedText options:0 range:range withTemplate:@""];
         NSLog(@"%@", fixedText);
+        
+        self.tracks = [dictionary objectForKey:@"tracks"];
+        [self.trackTableView reloadData];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             if(handler)
             {
@@ -113,14 +129,8 @@ static NSString *ApiPlusSecret = @"93v2rk2vdsrnzyxwv3bqvjbjrqCnJTmHqD";
     }] resume];
 }
 
-- (void)downloadAlbumTracks: (NSString *)title completionHandler: (void (^)(NSDictionary *))handler
+- (void)downloadAlbumTracks: (NSURL *)url completionHandler: (void (^)(NSDictionary *))handler
 {
-    NSString *searchValue = [title stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    NSString *firstPart = @"http://api.rovicorp.com/data/v1.1/album/tracks?album=";
-    NSString *secondPart = @"&country=US&language=en&format=json&apikey=93v2rk2vdsrnzyxwv3bqvjbj&sig=af2532ba497e6517d62d787b48b02788";
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",firstPart,searchValue,secondPart]];
-    NSLog(@"%@", url);
-    
     NSURLSession *session = [NSURLSession sharedSession];
     [[session dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data
