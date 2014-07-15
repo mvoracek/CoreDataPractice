@@ -91,6 +91,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="albumSearchBar" destination="bza-Jg-BrB" id="w0u-nx-qx9"/>
                         <outlet property="searchDisplayController" destination="ySv-kE-pcX" id="dRY-cg-FGu"/>
                     </connections>
                 </tableViewController>

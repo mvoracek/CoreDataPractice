@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *reviewTextView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *moreInfoControl;
 @property (weak, nonatomic) IBOutlet UITableView *trackTableView;
+@property (strong, nonatomic) UIActivityIndicatorView *spinner;
 
 @property (strong, nonatomic) NSArray *tracks;
 
@@ -54,6 +55,12 @@ static NSString *ApiPlusSecret = @"93v2rk2vdsrnzyxwv3bqvjbjkGPDNCJDSx";
     
     NSURL *tracksUrl = [self createURLWithTitle:self.album.title parameter:@"tracks"];
     NSURL *reviewUrl = [self createURLWithTitle:self.album.title parameter:@"primaryreview"];
+    self.spinner = [[UIActivityIndicatorView alloc]
+                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.center = CGPointMake(160, 350);
+    self.spinner.hidesWhenStopped = YES;
+    [self.view addSubview:self.spinner];
+    [self.spinner startAnimating];
     [self downloadAlbumTracks:tracksUrl completionHandler:^(NSDictionary *tracks) {}];
     [self downloadAlbumReview:reviewUrl completionHandler:^(NSDictionary *review) {}];
 }
@@ -115,10 +122,7 @@ static NSString *ApiPlusSecret = @"93v2rk2vdsrnzyxwv3bqvjbjkGPDNCJDSx";
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"~(.*?)]" options:0 error:&error];
         NSString *fixedText = [regex stringByReplacingMatchesInString:updatedText options:0 range:range withTemplate:@""];
         NSLog(@"%@", fixedText);
-        
-        self.tracks = [dictionary objectForKey:@"tracks"];
-        [self.trackTableView reloadData];
-        
+    
         dispatch_async(dispatch_get_main_queue(), ^{
             if(handler)
             {
@@ -137,9 +141,9 @@ static NSString *ApiPlusSecret = @"93v2rk2vdsrnzyxwv3bqvjbjkGPDNCJDSx";
                                                                    options:NSJSONReadingAllowFragments
                                                                      error:nil];
         
-        //self.tracks = dictionary [@"tracks"][@"title"];
         self.tracks = [dictionary objectForKey:@"tracks"];
         dispatch_async(dispatch_get_main_queue(), ^{
+            [self.spinner stopAnimating];
             [self.trackTableView reloadData];
             if(handler)
             {

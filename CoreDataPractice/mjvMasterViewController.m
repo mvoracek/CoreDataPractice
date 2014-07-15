@@ -12,11 +12,13 @@
 #import "Album.h"
 #import "VOKCoreDataManager.h"
 
-@interface mjvMasterViewController () <VOKFetchedResultsDataSourceDelegate>
+@interface mjvMasterViewController () <VOKFetchedResultsDataSourceDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (strong, nonatomic) AlbumDataSource *dataSource;
 @property (strong, nonatomic) NSArray *filteredList;
 @property (strong, nonatomic) NSFetchRequest *searchFetchRequest;
+@property (weak, nonatomic) IBOutlet UISearchBar *albumSearchBar;
+@property (strong, nonatomic) VOKCoreDataManager *managedObjectContext;
 
 @end
 
@@ -98,44 +100,6 @@
         
     }];*/
     
-}
-
-- (NSFetchRequest *)searchFetchRequest
-{
-    if (self.searchFetchRequest != nil)
-    {
-        return _searchFetchRequest;
-    }
-    
-    self.searchFetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Title" inManagedObjectContext:self.managedObjectContext];
-    [_searchFetchRequest setEntity:entity];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
-    [_searchFetchRequest setSortDescriptors:sortDescriptors];
-    
-    return _searchFetchRequest;
-}
-
-- (void)searchForText:(NSString *)searchText scope:(UYLWorldFactsSearchScope)scopeOption
-{
-    if (self.managedObjectContext)
-    {
-        NSString *predicateFormat = @"%K BEGINSWITH[cd] %@";
-        NSString *searchAttribute = @"name";
-        
-        if (scopeOption == searchScopeCapital)
-        {
-            searchAttribute = @"capital";
-        }
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:predicateFormat, searchAttribute, searchText];
-        [self.searchFetchRequest setPredicate:predicate];
-        
-        NSError *error = nil;
-        self.filteredList = [self.managedObjectContext executeFetchRequest:self.searchFetchRequest error:&error];
-    }
 }
 
 #pragma mark - Session for Images
