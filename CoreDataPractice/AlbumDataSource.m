@@ -27,8 +27,6 @@ static NSString *const CoolCellIdentifier = @"Cell";
     
     [cell layoutWithAlbum:album];
     
-    
-    
     return cell;
 }
 

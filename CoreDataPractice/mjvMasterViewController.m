@@ -11,16 +11,18 @@
 #import "AlbumDataSource.h"
 #import "Album.h"
 #import "VOKCoreDataManager.h"
+#import "mjvMasterTableViewCell.h"
 
-@interface mjvMasterViewController () <VOKFetchedResultsDataSourceDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface mjvMasterViewController () <VOKFetchedResultsDataSourceDelegate, UISearchBarDelegate>
 
 @property (strong, nonatomic) AlbumDataSource *dataSource;
-@property (strong, nonatomic) NSArray *filteredList;
+@property (strong, nonatomic) NSArray *filteredAlbumsArray;
 @property (strong, nonatomic) NSFetchRequest *searchFetchRequest;
 @property (weak, nonatomic) IBOutlet UISearchBar *albumSearchBar;
-@property (strong, nonatomic) VOKCoreDataManager *managedObjectContext;
 
 @end
+
+static NSString *const CoolCellIdentifier = @"Cell";
 
 @implementation mjvMasterViewController
 
@@ -60,15 +62,26 @@
     self.dataSource.delegate = self;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell *)sender
 {
-    NSIndexPath *senderIndexPath =  [self.tableView indexPathForCell:sender];
-    Album *selectedAlbum = [self.dataSource.fetchedResultsController objectAtIndexPath:senderIndexPath];
+    Album *selectedAlbum;
+    if (self.filteredAlbumsArray) {
+        NSIndexPath *senderPath = [self.searchDisplayController.searchResultsTableView indexPathForCell:sender];
+        selectedAlbum = [self.filteredAlbumsArray objectAtIndex:senderPath.row];
+    } else {
+        NSIndexPath *senderIndexPath =  [self.tableView indexPathForCell:sender];
+        selectedAlbum = [self.dataSource.fetchedResultsController objectAtIndexPath:senderIndexPath];
+    }
     
     [segue.destinationViewController setAlbum:selectedAlbum];
 }
 
--(void)loadFromPList
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (void)loadFromPList
 {
     NSArray *albums = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Albums" ofType:@"plist"]];
     [Album addWithArray:albums forManagedObjectContext:nil];
@@ -100,6 +113,50 @@
         
     }];*/
     
+}
+
+#pragma mark - Search results data source and delegate
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView
+{
+    self.filteredAlbumsArray = nil;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    NSInteger selectedScopeButtonIndex = self.searchDisplayController.searchBar.selectedScopeButtonIndex;
+    [self updateSearchResultsWithQuery:searchString scope:selectedScopeButtonIndex];
+    
+    return YES;
+}
+
+- (void)updateSearchResultsWithQuery:(NSString *)searchString scope:(NSInteger)searchOption
+{
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(artist CONTAINS[cd] %@) OR (title CONTAINS[cd] %@)", searchString, searchString];
+    self.filteredAlbumsArray = [Album fetchAllForPredicate:pred forManagedObjectContext:nil];
+}
+
+#pragma mark - UITableViewDataSource for searchResultsDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Album *album = [self.filteredAlbumsArray objectAtIndex:indexPath.row];
+    mjvMasterTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CoolCellIdentifier forIndexPath:indexPath];
+    
+    if (!cell) {
+        //is this necessary with storyboards? will there ever not be a cell ready?
+        cell = [[mjvMasterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:CoolCellIdentifier];
+    }
+    
+    [cell layoutWithAlbum:album];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.filteredAlbumsArray count];
 }
 
 #pragma mark - Session for Images
